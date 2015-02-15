@@ -1,0 +1,90 @@
+﻿@using OnlineMessenger.Domain.Entities
+@model dynamic
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/home.css")" />
+}
+
+@section pagescripts
+{
+    <script>
+        $(function () {
+            ko.applyBindings(notifier);
+            $(".header-right .menu .item:first").addClass("active"); // main page fix
+        });
+    </script>
+}
+
+
+<div class="main-root-menu-container">
+
+    <ul class="menu-ui">
+        <li>
+            <a href="@Url.Action("Index","Home")" class="menu-item">
+                <div class="icon"><i class="huge home icon"></i></div>
+                <label class="ui label">Главная</label>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Chat")" class="menu-item">
+                <div class="icon"><i class="huge chat icon"></i></div>
+                <label class="ui label">Чат</label>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","Messages")" class="menu-item">
+                <div class="icon"><i class="huge mail icon"></i></div>
+                <label class="ui label">Сообщения</label>
+            </a>
+        </li>
+
+        @if (User.IsInRole(Role.AdministratorRoleName))
+        {
+
+            <li>
+                <a href="@Url.Action("Index", "Statistics")" class="menu-item">
+                    <div class="icon"><i class="huge rocket icon"></i></div>
+                    <label class="ui label">Статистика</label>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Users")" class="menu-item">
+                    <div class="icon"><i class="huge user icon"></i></div>
+                    <label class="ui label">Пользователи</label>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Roles")" class="menu-item">
+                    <div class="icon"><i class="huge users icon"></i></div>
+                    <label class="ui label">Роли</label>
+                </a>
+            </li>
+        }
+        <li>
+            <a href="@Url.Action("Index","Code")" class="menu-item">
+                <div class="icon"><i class="huge code icon"></i></div>
+                <label class="ui label">Код</label>
+            </a>
+        </li>
+
+        <li>
+            <a href="@Url.Action("Index","Account")" class="menu-item">
+                <div class="icon"><i class="huge setting icon"></i></div>
+                <label class="ui label">Аккаунт</label>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("LogOut","Account")" class="menu-item">
+                <div class="icon"><i class="huge external url icon"></i></div>
+                <label class="ui label">Выход</label>
+            </a>
+        </li>
+
+    </ul>
+</div>

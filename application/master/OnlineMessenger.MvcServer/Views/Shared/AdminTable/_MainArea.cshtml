@@ -1,0 +1,51 @@
+﻿
+<div class="main-area">
+    <div class="main-area-content">
+        <!-- ko with: page.ResultsArea -->
+        <div class="table-title">
+            <i class="file icon"></i> Items found <span data-bind="text: page.Total, visible: !IsLoading()"></span> <span data-bind="visible: IsLoading">Loading...</span>
+        </div>
+        <!-- ko with: Table -->
+        <div class="table-header">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td><input data-bind="click : OnCheck, checked: Checked," type="checkbox" /></td>
+                    <!-- ko foreach: SortColumns -->
+                    <td data-bind="css: { 'active': IsSort() }, click: OnClick" class="sorted">
+                        <span data-bind="text: $data.Name"></span>
+                        <div class="sort-direction">
+                            <i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }" class="triangle down icon"></i>
+                        </div>
+                    </td>
+                    <!-- /ko -->
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div data-bind="onScroll: page.OnScroll" class="table-list style-9">
+            <table cellpadding="0" cellspacing="0" class="scrolling-table">
+                <tbody>
+                    <!-- ko foreach: Rows -->
+                    <tr>
+                        <td><input type="checkbox" data-bind="checked: $data.Checked, click: $data.OnCheck" /></td>
+                        <!--ko foreach: $data.Cells -->
+                        <td data-bind="text: $data.Value, attr : { title: $data.Value }, css: { 'sorting-cell': $data.Column.IsSort }"></td>
+                        <!-- /ko -->
+                        <td class="oprations">
+                            <div data-bind="click: $data.Edit, visible: $data.IsEditVisible" class="edit">
+                                <i class="pencil black icon"></i>
+                            </div>
+                            <div data-bind="click: $data.Delete" class="del">
+                                <i class="delete black icon"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+    </div>
+</div>
+

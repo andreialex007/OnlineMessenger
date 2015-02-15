@@ -1,0 +1,30 @@
+﻿<div class="left-panel">
+    <div class="panel-content">
+        <div class="panel-title">
+            <i class="laptop icon"></i> Actions
+        </div>
+        <div class="search-item ">
+            <div data-bind="click: page.AddForm" class="ui button">
+                Add new item
+            </div>
+        </div>
+        <div class="search-item save-button">
+            <!--ko with: page.SaveButton -->
+            <div data-bind="click: OnSave, css: { 'disabled' : IsSaving() }" class="ui   red icon button">
+                <i class="loading icon" data-bind="css: { 'hidden' : !IsSaving() }"></i>
+                <i class="save icon" data-bind="css: { 'hidden' : IsSaving() }"></i>
+                <span class="save-text"><span data-bind="text: SaveText"></span></span>
+            </div>
+            <div class="save-result">
+                <label data-bind="dissmissSlowVisible: IsSuccessVisible"><i class="checkmark green icon"></i> Success</label>
+                <label data-bind="dissmissSlowVisible: IsErrorVisible"><i class="remove red icon"></i> Error</label>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="search-item">
+            <label data-bind="click: page.GoToList" class="ui label go-to-list-label">
+                <i class="angle left icon"></i>Go to list
+            </label>
+        </div>
+    </div>
+</div>

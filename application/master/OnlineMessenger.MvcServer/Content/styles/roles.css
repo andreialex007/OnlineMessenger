@@ -1,0 +1,22 @@
+﻿/* Id */
+.table-header td:nth-child(2), .scrolling-table td:nth-child(2){
+	width: 50px;
+}
+
+
+/* Id */
+.table-header td:nth-child(4), .scrolling-table td:nth-child(4){
+	width: 200px;
+}
+
+/* UserName */
+.sorting-cell{
+	background-color: #fafafa !important;
+}
+
+.from-date .calendar:hover{
+	opacity: 1.0 !important;
+	cursor: pointer !important;
+}
+
+

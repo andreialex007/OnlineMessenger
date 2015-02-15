@@ -1,0 +1,31 @@
+﻿<div class="main-area">
+    <div class="main-area-content style-9">
+        <!-- ko foreach: page.FormsList -->
+        <div class="edit-user">
+            <div class="table-title">
+                <i class="text file icon"></i> <span data-bind="text: $data.EntityName"></span> <span data-bind="text: $data.Id"></span>
+                <span data-bind="click: $parent.RemoveForm, visible: $data.IsRemoveVisible" class="remove-new-user"><i class="remove icon"></i>Remove</span>
+            </div>
+            <div class="ui warning form">
+                <div class="ui warning message" data-bind="fadeVisible: $data.IsShowErrors">
+                    <div class="header">Could you check something!</div>
+                    <ul data-bind="foreach:$data.Errors " class="list">
+                        <li data-bind="text: $data"></li>
+                    </ul>
+                </div>
+                <div class="entity-fields-area">
+                    @if (@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Users")
+                    {
+                        @Html.Partial("EditForm/_UserFields")
+                    }
+                    @if (@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "Roles")
+                    {
+                        @Html.Partial("EditForm/_RoleFields")
+                    }
+                </div>
+            </div>
+            <div class="ui section divider"></div>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>

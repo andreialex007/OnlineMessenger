@@ -1,0 +1,78 @@
+﻿<div class="left-panel">
+    <div class="panel-content">
+        <div class="panel-title">
+            <i class="search icon"></i> Поиск
+        </div>
+        <!-- ko foreach: page.LeftPanel.Fields -->
+        <div class="search-item">
+            <!-- ko if: ($data.Type() == 'Integer' || $data.Type() == 'String') -->
+            <!-- ko template: { name: 'search-template-integer-string', data: $data } -->
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: ($data.Type() == 'Date' ) -->
+            <!-- ko template: { name: 'search-template-date', data: $data } -->
+            <!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: ($data.Type() == 'Contains' ) -->
+            <!-- ko template: { name: 'search-template-contains', data: $data } -->
+            <!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <div class="panel-title">
+            <i class="laptop icon"></i> Действия
+        </div>
+
+        @if (@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() != "Messages")
+        {
+            <div class="search-item">
+                <div data-bind="click: page.LeftPanel.New" class="ui labeled icon button">
+                    <i class="file icon"></i>
+                    Новый
+                </div>
+            </div>
+            <div class="search-item">
+                <div data-bind="css: { 'disabled': page.LeftPanel.EditDisabled }, click: page.LeftPanel.Edit" class="ui labeled icon button">
+                    <i class="pencil icon"></i>
+                    Редактировать
+                </div>
+            </div>
+        }
+
+        <div class="search-item">
+            <div class="ui labeled icon button" data-bind="css: { 'disabled': page.LeftPanel.DeleteDisabled }, click: page.LeftPanel.OnDelete">
+                <i class="delete icon"></i>
+                Удалить
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/html" id="search-template-integer-string">
+    <label data-bind="text: $data.Name"></label>
+    <div class="input-line">
+        <div class="ui fluid right icon input">
+            <input data-bind="value: $data.Value, valueUpdate: 'afterkeydown', event: { keyup: page.OnSearch}" type="text" placeholder="Возможен список через запятую" />
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="search-template-date">
+    <label data-bind="text: $data.Name"></label>
+    <div class="input-line from-date">
+        <div class="ui fluid right icon input">
+            <input data-bind="value: $data.Value, valueUpdate: 'afterkeydown', event: { keyup: page.OnSearch}, maskedInput: '99.99.9999'" type="text" placeholder="Выберите дату" />
+            <i data-bind="datePicker: page.LeftPanel.OnPickDate" class="calendar icon"></i>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="search-template-contains">
+    <label data-bind="text: $data.Name"></label>
+    <div class="input-line">
+        <div class="ui fluid right icon input">
+            <input data-bind="value: $data.Value, valueUpdate: 'afterkeydown', event: { keyup: page.OnSearch}" type="text" placeholder="Содержит текст" />
+        </div>
+    </div>
+</script>

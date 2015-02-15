@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineMessenger.MvcServer</RootNamespace>
+    <AssemblyName>OnlineMessenger.MvcServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AttributeRouting">
+      <HintPath>..\packages\AttributeRouting.Core.3.5.6\lib\net40\AttributeRouting.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web">
+      <HintPath>..\packages\AttributeRouting.Core.Web.3.5.6\lib\net40\AttributeRouting.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="AttributeRouting.Web.Mvc">
+      <HintPath>..\packages\AttributeRouting.3.5.6\lib\net40\AttributeRouting.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.2\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.2.1\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="EnhancedViewLocations">
+      <HintPath>..\packages\EnhancedViewLocations.1.0\lib\net40\EnhancedViewLocations.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.0.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SixPack">
+      <HintPath>..\packages\SixPack.1.2.46\lib\net40\SixPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.1.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.Net4.dll">
+      <Link>AutoMapper.Net4.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\new.png" />
+    <Content Include="Content\javascript\Libs\datepicker\css\datepicker.css" />
+    <Content Include="Content\javascript\Libs\datepicker\css\layout.css" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_b.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_bl.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_br.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_l.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_r.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_t.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_tl.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\custom_tr.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_b.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_bl.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_br.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_l.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_r.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_t.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_tl.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\datepicker_tr.png" />
+    <Content Include="Content\javascript\Libs\datepicker\images\field.png" />
+    <Content Include="Content\javascript\Libs\datepicker\index.html" />
+    <Content Include="Content\javascript\Libs\datepicker\js\datepicker.js" />
+    <Content Include="Content\javascript\Libs\datepicker\js\eye.js" />
+    <Content Include="Content\javascript\Libs\datepicker\js\jquery.js" />
+    <Content Include="Content\javascript\Libs\datepicker\js\layout.js" />
+    <Content Include="Content\javascript\Libs\datepicker\js\utils.js" />
+    <Content Include="Content\javascript\Libs\jquery-1.5.min.js" />
+    <Content Include="Content\javascript\Libs\jquery.signalR-2.0.2.js" />
+    <Content Include="Content\javascript\Models\Account\AccountPage.js" />
+    <Content Include="Content\javascript\Models\Account\AccountSaveButton.js" />
+    <Content Include="Content\javascript\Models\Chat\Message.js" />
+    <Content Include="Content\javascript\Models\Chat\Smile.js" />
+    <Content Include="Content\javascript\Models\Chat\SmilesList.js" />
+    <Content Include="Content\javascript\Models\Chat\UserPage\SendMail.js" />
+    <Content Include="Content\javascript\Models\Chat\UserPage\UserMessage.js" />
+    <Content Include="Content\javascript\Models\Login\LoginPage.js" />
+    <Content Include="Content\javascript\Models\Messages\Index\MessageRow.js" />
+    <Content Include="Content\javascript\Models\Messages\Index\MessagesPage.js" />
+    <Content Include="Content\javascript\Models\Roles\Edit\RoleEditForm.js" />
+    <Content Include="Content\javascript\Models\Roles\Edit\RoleEditPage.js" />
+    <Content Include="Content\javascript\Models\Roles\Index\RolesPage.js" />
+    <Content Include="Content\javascript\Models\Shared\MessagesNotifier.js" />
+    <Content Include="Content\javascript\Models\Statistics\charts.js" />
+    <Content Include="Content\javascript\Models\Users\Edit\EditForm.js" />
+    <Content Include="Content\javascript\Models\Users\Edit\SaveButton.js" />
+    <Content Include="Content\javascript\Libs\jquery.cookie.js" />
+    <Content Include="Content\javascript\Models\Users\Index\Cell.js" />
+    <Content Include="Content\javascript\Models\Users\Index\Column.js" />
+    <Content Include="Content\javascript\Models\Users\Index\Field.js" />
+    <Content Include="Content\javascript\Models\Users\Index\FieldDefinition.js" />
+    <Content Include="Content\javascript\Models\Users\Index\LeftPanel.js" />
+    <Content Include="Content\javascript\Models\Users\Index\ResultsArea.js" />
+    <Content Include="Content\javascript\Models\Users\Index\Row.js" />
+    <Content Include="Content\javascript\Models\Users\Index\Table.js" />
+    <Content Include="Content\javascript\Models\Chat\UserPage\UserPage.js" />
+    <Content Include="Content\new_message.mp3" />
+    <Content Include="Content\styles\account.css" />
+    <Content Include="Content\styles\code.css" />
+    <Content Include="Content\styles\edituser.css" />
+    <Content Include="Content\styles\home.css" />
+    <Content Include="Content\styles\login.css" />
+    <Content Include="Content\styles\messages.css" />
+    <Content Include="Content\styles\roles.css" />
+    <Content Include="Content\styles\semantic\css\semantic.css" />
+    <Content Include="Content\styles\semantic\css\semantic.min.css" />
+    <Content Include="Content\styles\semantic\fonts\basic.icons.svg" />
+    <Content Include="Content\styles\semantic\fonts\icons.svg" />
+    <Content Include="Content\styles\semantic\images\loader-large-inverted.gif" />
+    <Content Include="Content\styles\semantic\images\loader-large.gif" />
+    <Content Include="Content\styles\semantic\images\loader-medium-inverted.gif" />
+    <Content Include="Content\styles\semantic\images\loader-medium.gif" />
+    <Content Include="Content\styles\semantic\images\loader-mini-inverted.gif" />
+    <Content Include="Content\styles\semantic\images\loader-mini.gif" />
+    <Content Include="Content\styles\semantic\images\loader-small-inverted.gif" />
+    <Content Include="Content\styles\semantic\images\loader-small.gif" />
+    <Content Include="Content\styles\semantic\javascript\semantic.js" />
+    <Content Include="Content\styles\semantic\javascript\semantic.min.js" />
+    <Content Include="Content\styles\sendmail.css" />
+    <Content Include="Content\styles\statistics.css" />
+    <Content Include="Content\styles\style.css" />
+    <Content Include="Content\styles\table.css" />
+    <Content Include="Content\styles\users.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\styles\semantic\fonts\basic.icons.eot" />
+    <Content Include="Content\styles\semantic\fonts\basic.icons.ttf" />
+    <Content Include="Content\styles\semantic\fonts\basic.icons.woff" />
+    <Content Include="Content\styles\semantic\fonts\icons.eot" />
+    <Content Include="Content\styles\semantic\fonts\icons.otf" />
+    <Content Include="Content\styles\semantic\fonts\icons.ttf" />
+    <Content Include="Content\styles\semantic\fonts\icons.woff" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\big-user-icon-admin - копия.png" />
+    <Content Include="Content\images\big-user-icon-admin.png" />
+    <Content Include="Content\images\big-user-icon.png" />
+    <Content Include="Content\images\close-icon.png" />
+    <Content Include="Content\images\header-background.png" />
+    <Content Include="Content\images\logoff-icon-hover.png" />
+    <Content Include="Content\images\logoff-icon.png" />
+    <Content Include="Content\images\seamlesstexture15_1200.jpg" />
+    <Content Include="Content\images\seamlesstexture19_1200.jpg" />
+    <Content Include="Content\images\seamlesstexture29_1200.jpg" />
+    <Content Include="Content\images\seamlesstexture7_1200.jpg" />
+    <Content Include="Content\images\selected-top-menu-item.png" />
+    <Content Include="Content\images\smiles\amazing.png" />
+    <Content Include="Content\images\smiles\anger.png" />
+    <Content Include="Content\images\smiles\bad_egg.png" />
+    <Content Include="Content\images\smiles\bad_smile.png" />
+    <Content Include="Content\images\smiles\beaten.png" />
+    <Content Include="Content\images\smiles\big_smile.png" />
+    <Content Include="Content\images\smiles\black_heart.png" />
+    <Content Include="Content\images\smiles\cry.png" />
+    <Content Include="Content\images\smiles\electric_shock.png" />
+    <Content Include="Content\images\smiles\exciting.png" />
+    <Content Include="Content\images\smiles\eyes_droped.png" />
+    <Content Include="Content\images\smiles\girl.png" />
+    <Content Include="Content\images\smiles\greedy.jpg" />
+    <Content Include="Content\images\smiles\greedy.png" />
+    <Content Include="Content\images\smiles\grimace.jpg" />
+    <Content Include="Content\images\smiles\grimace.png" />
+    <Content Include="Content\images\smiles\haha.jpg" />
+    <Content Include="Content\images\smiles\haha.png" />
+    <Content Include="Content\images\smiles\happy.png" />
+    <Content Include="Content\images\smiles\horror.png" />
+    <Content Include="Content\images\smiles\money.png" />
+    <Content Include="Content\images\smiles\nothing.png" />
+    <Content Include="Content\images\smiles\nothing_to_say.png" />
+    <Content Include="Content\images\smiles\scorn.png" />
+    <Content Include="Content\images\smiles\secret_smile.png" />
+    <Content Include="Content\images\smiles\shame.png" />
+    <Content Include="Content\images\smiles\shocked.png" />
+    <Content Include="Content\images\smiles\super_man.png" />
+    <Content Include="Content\images\smiles\the_iron_man.png" />
+    <Content Include="Content\images\smiles\unhappy.jpg" />
+    <Content Include="Content\images\smiles\unhappy.png" />
+    <Content Include="Content\images\smiles\victory.jpg" />
+    <Content Include="Content\images\smiles\victory.png" />
+    <Content Include="Content\images\smiles\what.jpg" />
+    <Content Include="Content\images\smiles\what.png" />
+    <Content Include="Content\images\table-top-bar-background-sort.png" />
+    <Content Include="Content\images\table-top-bar-background.png" />
+    <Content Include="Content\images\user-default-avatar.png" />
+    <Content Include="Content\javascript\Models\Chat\Index\chat.js" />
+    <Content Include="Content\javascript\Common\common-scripts.js" />
+    <Content Include="Content\javascript\Common\custom-binders.js" />
+    <Content Include="Content\javascript\Models\Users\Edit\EditPage.js" />
+    <Content Include="Content\javascript\Libs\jquery-2.0.3.min.js" />
+    <Content Include="Content\javascript\Libs\jquery.jscrollpane.min.js" />
+    <Content Include="Content\javascript\Libs\jquery.maskedinput.min.js" />
+    <Content Include="Content\javascript\Libs\jquery.mousewheel.js" />
+    <Content Include="Content\javascript\Libs\knockout-3.0.0.js" />
+    <Content Include="Content\javascript\Libs\knockout.mapping-latest.js" />
+    <Content Include="Content\javascript\Libs\linq.min.js" />
+    <Content Include="Content\javascript\Libs\moment.min.js" />
+    <Content Include="Content\javascript\Models\Users\Index\UsersPage.js" />
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ThreadingTools\ConnectionTracker.cs" />
+    <Compile Include="Tools\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="App_Start\AttributeRoutingConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Tools\Bootstrapper.cs" />
+    <Compile Include="Tools\ControllersInstaller.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
+    <Compile Include="Controllers\CodeController.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\IgnorableSerializerContractResolver.cs" />
+    <Compile Include="Tools\Utils.cs" />
+    <Compile Include="Tools\HtmlHelperExtensions.cs" />
+    <Compile Include="Hubs\Broadcaster.cs" />
+    <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\Startup.cs" />
+    <Compile Include="Tools\JsonNetResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadingTools\StopTimer.cs" />
+    <Compile Include="Tools\HttpPostedFileBaseExtensions.cs" />
+    <Compile Include="ViewModels\MessageDisplayViewModel.cs" />
+    <Compile Include="ViewModels\MessageViewModel.cs" />
+    <Compile Include="ViewModels\RoleEditViewModel.cs" />
+    <Compile Include="ViewModels\RoleTableItemViewModel.cs" />
+    <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\UserEditViewModel.cs" />
+    <Compile Include="ViewModels\UserSettingsEditModel.cs" />
+    <Compile Include="ViewModels\UserTableItemViewModel.cs" />
+    <Compile Include="Tools\WindsorControllerFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Chat\Index.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Account\LogIn.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\AdminTable\_MainArea.cshtml" />
+    <Content Include="Views\Shared\AdminTable\_LeftPanel.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Shared\EditForm\_LeftPanel.cshtml" />
+    <Content Include="Views\Shared\EditForm\_MainArea.cshtml" />
+    <Content Include="Views\Shared\EditForm\_UserFields.cshtml" />
+    <Content Include="Views\Shared\EditForm\_RoleFields.cshtml" />
+    <Content Include="Views\Chat\UserPage.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Code\Index.cshtml" />
+    <Content Include="Views\Chat\MailView.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\342342.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineMessenger.Data.Ef\OnlineMessenger.Data.Ef.csproj">
+      <Project>{c6cc7604-0a26-4735-8538-2fc0fe4e7f7e}</Project>
+      <Name>OnlineMessenger.Data.Ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMessenger.Domain\OnlineMessenger.Domain.csproj">
+      <Project>{83d2e464-54a1-4855-91bc-68b85decd17b}</Project>
+      <Name>OnlineMessenger.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OnlineMessenger.Mailer\OnlineMessenger.Mailer.csproj">
+      <Project>{27d03e4c-1162-4e6f-b802-b46450b50796}</Project>
+      <Name>OnlineMessenger.Mailer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52646</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52059/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,183 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title>Main page</title>
+			<link rel="stylesheet" href="style.css" />
+			<link rel="stylesheet" href="table.css" />
+			<link rel="stylesheet" href="edituser.css" />
+			<link rel="stylesheet" href="semantic/css/semantic.css" />
+			<script type="text/javascript" src="datepicker/js/jquery.js"></script>
+			<script type="text/javascript" >
+				var jq_1_32 = $.noConflict();
+			</script>
+			<!-- date picker -->
+			<link rel="stylesheet" media="screen" type="text/css" href="datepicker/css/datepicker.css" />
+			<script type="text/javascript" src="datepicker/js/datepicker.js"></script>
+			
+			<script src="javascript/jquery-2.0.3.min.js" ></script>
+			<script src="javascript/jquery.maskedinput.min.js" ></script>
+			<script src="javascript/knockout-3.0.0.js" ></script>
+			<script src="javascript/knockout.mapping-latest.js" ></script>
+			<script src="javascript/linq.min.js" ></script>
+			<script src="javascript/moment.min.js" ></script>
+		</head>
+		<body>
+			<div class="page-background" ></div>
+			<div class="root" >
+				<div class="header" >
+					<div class="header-left" >
+						<div class="user-info-box" >
+							<div class="avatar" >
+							</div>
+							<div class="user-name" >Admin</div>
+							<div class="messages" ><span>messages</span> <div class="ui blue circular label">22</div></div>
+						</div>
+					</div>
+					<div class="header-right" >
+						<div class="menu" >
+							<!-- <div class="item" ><a href="#" > <i class="dashboard icon"></i>Dashboard</a></div> -->
+							<div class="item" ><a href="#" ><i class="chat icon"></i>Chat</a></div>
+<!-- 
+							<div class="item" ><a href="#" ><i class="info icon"></i>Statistics</a></div>
+							<div class="item" ><a href="#" ><i class="calendar icon"></i>Calendar</a></div> -->
+							<div class="item" ><a href="#" ><i class="mail icon"></i>Messages</a></div>
+							<div class="item active" ><a href="#" ><i class="users icon"></i>Users</a></div>
+							<div class="item" ><a href="#" ><i class="user icon"></i>Roles</a></div>
+							<div class="item" ><a href="#" ><i class="settings icon"></i>Settings</a></div>
+						</div>
+						<div class="logoff-box" ></div>
+					</div>
+				</div>
+				<div class="content" >
+					<div class="left-panel" >
+						<div class="panel-content" >
+							
+							
+							<div class="panel-title" >
+								<i class="laptop icon"></i> Actions
+							</div>
+							<div class="search-item save-button" >
+								<!--ko with: page.SaveButton -->
+									<div data-bind="click: OnSave, css: { 'disabled' : IsSaving() }" class="ui   red icon button">
+									  <i class="loading icon"  data-bind="css: { 'hidden' : !IsSaving() }" ></i>
+									  <i class="save icon" data-bind="css: { 'hidden' : IsSaving() }"  ></i>
+									  <span class="save-text"  ><span data-bind="text: SaveText" ></span></span>
+									</div>
+									<div class="save-result" >
+										<label data-bind="dissmissSlowVisible: IsSuccessVisible" ><i class="checkmark green icon"  ></i> Success</label>
+										<label data-bind="dissmissSlowVisible: IsErrorVisible"  ><i class="remove red icon"  ></i> Error</label>
+									</div>
+								<!-- /ko -->	
+								
+							</div>
+							<div class="search-item" >
+								
+								  <a href="./"  class="ui label">
+									  <i class="angle left icon"></i>Go to list
+									</a>
+								
+							</div>
+							
+							
+								
+						</div>
+					</div>
+					<div class="main-area" >
+						<div class="main-area-content style-9" >
+							<!-- ko foreach: page.FormsList -->
+											<div class="edit-user" >
+											<div class="table-title" ><i class="text file icon"></i> User <span data-bind="text: $data.Id" >125</span>
+										<span data-bind="click: $parent.removeForm" class="remove-new-user" ><i class="remove icon"></i>Remove</span>
+										</div>
+										
+										<div class="ui warning form">
+										<div class="ui warning message" data-bind="fadeVisible: $data.IsShowErrors"  >
+											<div class="header">Could you check something!</div>
+											<ul data-bind="foreach:$data.Errors " class="list">
+											  <li data-bind="text: $data" ></li>
+											</ul>
+										  </div>
+										
+											<div class="two fields">
+					  <div class="field">
+											<label>Username</label>
+											<div class="ui left labeled icon input">
+											  <input  maxlength="255" data-bind="value: $data.UserName, valueUpdate: 'afterkeydown'" type="text" placeholder="Username">
+											  <i class="user icon"></i>
+											  <div class="ui corner label">
+												<i class="icon asterisk"></i>
+											  </div>
+											</div>
+										  </div>
+					  <div class="field">
+											<label>Email</label>
+											<div class="ui left labeled icon input">
+											  <input  maxlength="255" data-bind="value: $data.Email, valueUpdate: 'afterkeydown'"  type="text" placeholder="Email">
+											  <i class="mail icon"></i>
+											  <div class="ui corner label">
+												<i class="icon asterisk"></i>
+											  </div>
+											</div>
+										  </div>
+					</div>
+										  <div class="field">	
+											<label><input data-bind="checked: $data.IsChangePassword" type="checkbox" /> Change Password</label>
+										  </div>
+										  <div data-bind="fadeVisible: $data.IsChangePassword" class="password-fields" >
+											<div class="field">
+												<label>Password</label>
+												<div class="ui left labeled icon input">
+												  <input maxlength="255" data-bind="value: $data.Password, valueUpdate: 'afterkeydown'"  type="password">
+												  <i class="lock icon"></i>
+												  <div class="ui corner label">
+													<i class="icon asterisk"></i>
+												  </div>
+												</div>
+											  </div>
+											  <div class="field">
+												<label>Retype password</label>
+												<div class="ui left labeled icon input">
+												  <input maxlength="255" data-bind="value: $data.PasswordConfirm, valueUpdate: 'afterkeydown'"  type="password">
+												  <i class="lock icon"></i>
+												  <div class="ui corner label">
+													<i class="icon asterisk"></i>
+												  </div>
+												</div>
+											  </div>
+										  </div>
+										  
+										 <div class="table-title" >Roles</div>
+										 
+										 
+										 <!-- ko foreach: $data.AvaliableRoles -->
+											  <div class="role" >
+												<label> <input data-bind="checked: $parent.Roles, value: $data" type="checkbox"  name="walk"> <span data-bind="text: $data" ></span></label>
+											  </div>
+											   
+										 <!-- /ko -->
+										 
+										 
+										   
+										  
+										  
+										  
+										</div>
+											<div class="ui section divider"></div>
+										</div>
+							<!-- /ko -->
+							
+							</div>
+					</div>
+				</div>
+				<div class="footer" >
+					<span>
+						Chat server 2014
+					</span>
+				</div>
+			</div>
+			<script src="javascript/common-scripts.js" ></script>
+			<script src="javascript/custom-binders.js" ></script>
+			<script src="javascript/edituser.js" ></script>
+		</body>
+</html>

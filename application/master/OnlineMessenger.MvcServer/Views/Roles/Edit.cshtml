@@ -1,0 +1,32 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Edit Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/edituser.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/javascript/Libs/datepicker/css/datepicker.css")" />
+}
+@section pagescripts{
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.maskedinput.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Edit/EditForm.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Edit/SaveButton.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Edit/EditPage.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Roles/Edit/RoleEditForm.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Roles/Edit/RoleEditPage.js")"></script>
+    <script>
+        var page = null;
+        $(function () {
+            page = new RoleEditPage();
+            ko.applyBindings(page);
+            page.Init();
+        });
+    </script>
+}
+
+
+@Html.Partial("EditForm/_LeftPanel")
+@Html.Partial("EditForm/_MainArea")

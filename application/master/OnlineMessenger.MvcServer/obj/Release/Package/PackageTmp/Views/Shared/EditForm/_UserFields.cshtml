@@ -1,0 +1,54 @@
+﻿<div class="two fields">
+    <div class="field">
+        <label>Username</label>
+        <div class="ui left labeled icon input">
+            <input maxlength="255" data-bind="value: $data.UserName, valueUpdate: 'afterkeydown'" type="text" placeholder="Username">
+            <i class="user icon"></i>
+            <div class="ui corner label">
+                <i class="icon asterisk"></i>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Email</label>
+        <div class="ui left labeled icon input">
+            <input maxlength="255" data-bind="value: $data.Email, valueUpdate: 'afterkeydown'" type="text" placeholder="Email">
+            <i class="mail icon"></i>
+            <div class="ui corner label">
+                <i class="icon asterisk"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-bind="visible: $data.IsChangePasswordCheckBoxVisible" class="field">
+    <label><input data-bind="checked: $data.IsChangePassword" type="checkbox" /> Change Password</label>
+</div>
+<div data-bind="fadeVisible: $data.IsChangePassword" class="password-fields">
+    <div class="field">
+        <label>Password</label>
+        <div class="ui left labeled icon input">
+            <input maxlength="255" data-bind="value: $data.Password, valueUpdate: 'afterkeydown'" type="password">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+                <i class="icon asterisk"></i>
+            </div>
+        </div>
+    </div>
+    <div class="field">
+        <label>Retype password</label>
+        <div class="ui left labeled icon input">
+            <input maxlength="255" data-bind="value: $data.PasswordConfirm, valueUpdate: 'afterkeydown'" type="password">
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+                <i class="icon asterisk"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="table-title">Roles</div>
+<!-- ko foreach: page.AvaliableRoles -->
+
+<div class="role">
+    <label> <input data-bind="checked: $parent.Roles, value: $data.Id" type="checkbox" name="walk"> <span data-bind="text: $data.Name"></span></label>
+</div>
+<!-- /ko -->

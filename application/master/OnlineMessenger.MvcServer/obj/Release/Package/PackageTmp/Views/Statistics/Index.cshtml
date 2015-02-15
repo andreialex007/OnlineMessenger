@@ -1,0 +1,57 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Statistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/statistics.css")" />
+}
+
+@section pagescripts
+{
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Statistics/charts.js")"></script>
+    <script>
+        $(function () {
+            ko.applyBindings(notifier);
+        });
+    </script>
+}
+
+<div class="charts-area">
+    <h3 class="ui header">
+        <i class="calendar icon"></i>
+        <div class="content">
+            Users per day
+            <div class="sub header">Quantity of users applied to operators per day</div>
+        </div>
+    </h3>
+
+    <div id="users-per-day-container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+
+
+    <h3 class="ui header">
+        <i class="mail icon"></i>
+        <div class="content">
+            Messages per day
+            <div class="sub header">Quantity of messages per day</div>
+        </div>
+    </h3>
+
+    <div id="messages-per-day-container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+
+
+    <h3 class="ui header">
+        <i class="users icon"></i>
+        <div class="content">
+            Users per operator
+            <div class="sub header">Quantity of users per operator</div>
+        </div>
+    </h3>
+
+    <div id="users-per-operator-container" style="min-width: 500px; height: 400px; margin: 0 auto"></div>
+
+</div>

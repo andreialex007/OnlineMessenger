@@ -1,0 +1,115 @@
+﻿@using OnlineMessenger.Domain.Entities
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/semantic/css/semantic.css")" />
+    @RenderSection("pagestyles", false)
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery-2.0.3.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/knockout-3.0.0.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/knockout.mapping-latest.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/linq.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/moment.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Common/common-scripts.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Common/custom-binders.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.signalR-2.0.2.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Shared/MessagesNotifier.js")"></script>
+    <script>
+        var controller = '@ViewContext.RouteData.Values["controller"]';
+        function getUrl(path) {
+            return "/" + controller + path;
+        }
+        var currentUserName = '@ViewContext.Controller.ControllerContext.HttpContext.User.Identity.Name';
+        var notifier = new MessagesNotifier();
+    </script>
+    @RenderSection("pagescripts", false)
+    <script>
+
+        $(function () {
+            $('.header-right a').filter(function (index) { return $(this).attr("href") === "/" + controller; }).first().parent().addClass("active");
+
+            @if (@ViewContext.RouteData.Values["controller"].ToString() != "Chat")
+            {
+                <text>
+            notifier.InitHub();
+            </text>
+            }
+            else
+            {
+                <text>
+            setTimeout(function () {
+                notifier.RemoveNotifications();
+            }, 250);
+            </text>
+            }
+
+            notifier.LoadCurrentMessagesCount();
+            if (newMessagesCount != 0) {
+                notifier.TopNewMessages(newMessagesCount);
+                notifier.IsShowNewMessages(true);
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <audio data-bind="playAudio: notifier.playAudio">
+        <source src="@Url.Content("~/Content/new_message.mp3")">
+    </audio>
+
+    <div class="page-background"></div>
+    <div class="root">
+        <div class="header">
+            <div class="header-left">
+                <div class="user-info-box">
+                    <div class="avatar">
+                        <div class="avatar-table">
+                            <table cellpadding="0" cellspacing="0" class="avatar-table">
+                                <tr class="avatar-table">
+                                    <td class="avatar-table" valign="middle" align="center"><img data-bind="refreshImage: notifier.RefreshImage" width="35" height="35" src="@Url.Content("~/Account/GetAvatar/")" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="user-name">@User.Identity.Name</div>
+
+
+                    <div class="messages">
+                        <span class="new-messages" data-bind="visible: notifier.IsShowNewMessages"><a href="@Url.Action("Index","Chat")">новые сообщения</a></span>
+                        <span class="no-messages" data-bind="visible: !notifier.IsShowNewMessages()">нет сообщений</span> <div data-bind="text: notifier.TopNewMessages, visible: notifier.IsShowNewMessages" class="ui blue small label messages-count"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="menu">
+
+                    <div class="item"><a href="@Url.Action("Index","Home")"><i class="home icon"></i>Главная</a></div>
+                    <div class="item"><a href="@Url.Action("Index","Chat")"><i class="chat icon"></i>Чат</a></div>
+                    <div class="item"><a href="@Url.Action("Index","Messages")"><i class="mail icon"></i>Сообщения</a></div>
+                    @if (User.IsInRole(Role.AdministratorRoleName))
+                    {
+                        <div class="item"><a href="@Url.Action("Index","Statistics")"><i class="rocket icon"></i>Статистика</a></div>
+                        <div class="item"><a href="@Url.Action("Index","Users")"><i class="users icon"></i>Пользователи</a></div>
+                        <div class="item"><a href="@Url.Action("Index","Roles")"><i class="user icon"></i>Роли</a></div>
+                    }
+                    <div class="item"><a href="@Url.Action("Index","Account")"><i class="settings icon"></i>Аккаунт</a></div>
+                    <div class="item"><a href="@Url.Action("Index","Code")"><i class="code icon"></i>Код</a></div>
+                </div>
+                <a href="@Url.Action("LogOut","Account")" class="logoff-box"></a>
+            </div>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <span>
+                Chat Server @DateTime.Now.Year
+            </span>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title>Main page</title>
+			<!-- common styles -->
+			<link rel="stylesheet" href="style.css" />
+			<link rel="stylesheet" href="semantic/css/semantic.css" />
+			<!-- /common styles -->
+			
+			<!-- common scripts -->
+			<script src="javascript/jquery-2.0.3.min.js" ></script>
+			<script src="javascript/knockout-3.0.0.js" ></script>
+			<script src="javascript/knockout.mapping-latest.js" ></script>
+			<script src="javascript/linq.min.js" ></script>
+			<script src="javascript/moment.min.js" ></script>
+			<!-- /common scripts -->
+			
+			
+			
+		</head>
+		<body  >
+			<div class="page-background" ></div>
+			<div class="root" >
+				<div class="header" >
+					<div class="header-left" >
+						<div class="user-info-box" >
+							<div class="avatar" >
+							</div>
+							<div class="user-name" >Admin</div>
+							<div class="messages" ><span>messages</span> <div class="ui blue circular label">22</div></div>
+						</div>
+					</div>
+					<div class="header-right" >
+						<div class="menu" >
+							<div class="item" ><a href="#" > <i class="dashboard icon"></i>Dashboard</a></div> 
+							<div class="item active" ><a href="#" ><i class="chat icon"></i>Chat</a></div>
+							<div class="item" ><a href="#" ><i class="mail icon"></i>Messages</a></div>
+							<div class="item" ><a href="#" ><i class="users icon"></i>Users</a></div>
+							<div class="item" ><a href="#" ><i class="user icon"></i>Roles</a></div>
+							<div class="item" ><a href="#" ><i class="settings icon"></i>Settings</a></div>
+						</div>
+						<div class="logoff-box" ></div>
+					</div>
+				</div>
+				<div class="content" >
+					<div class="left-panel" >
+						<div class="search-box" >
+							<div class="ui fluid icon input">
+							  <input type="text" data-bind="value: page.SearchText, valueUpdate: 'afterkeydown', event: { keyup: page.OnSearch}" placeholder="Search users..."/>
+							  <i class="inverted search icon"></i>
+							</div>
+						</div>
+						<div class="users-list"  data-bind="visible: page.ShowUsersList"  >
+									<div data-bind="foreach: page.ListGroups" class="group" >
+										<div class="group-header" data-bind="click: $data.Clicked" > 
+											<div class="group-icon" >
+												<i data-bind="css: { 'down': $data.IsExpanded(), 'right': !$data.IsExpanded() }" class="arrow icon"></i>
+											</div>
+											<div class="group-name" title="" data-bind="text: $data.Name" ></div>
+										</div>
+											<div class="group-items" data-bind="fadeVisible: $data.IsExpanded" >
+												<!-- ko template: { name: 'user-template', foreach: $data.Users } --><!-- /ko -->
+											</div>
+									</div>
+							</div>
+						<div class="users-list search" data-bind="visible: page.ShowSearchPanel" >
+							<div class="group" >
+									<div class="group-header" > 
+										<div class="group-icon" >
+											<i class="search icon"></i>
+										</div>
+										<div class="group-name" title="" > Search results</div>
+									</div>
+									
+								<div class="group-items" >
+									<!-- ko template: { name: 'user-template', foreach: page.SearchResult } --><!-- /ko -->
+								</div>
+							</div>
+						</div>
+	</div>
+					<div class="main-area" >
+						<div class="tab-headers" >
+							<!-- ko foreach: page.Tabs -->
+								<div class="tab-header" data-bind="addClass: ko.observable($data.IsVisible() ? 'active' : ''), click: $data.Select" >
+									<div class="info-placeholder" > <div  data-bind="visible: $data.NewMessagesCount() != 0, text: $data.NewMessagesCount"  class="message-info" ></div> </div>
+									<div class="icon" >
+										<i class="user icon"></i>
+									</div>
+									<div data-bind="text: $data.UserName" class="name" ></div>
+									<div class="close-box" >
+										<div data-bind="click: $data.Remove" class="close-icon" ></div>
+									</div>
+								</div>
+							<!-- /ko -->
+							</div>
+						<div class="tab-contents" >
+							<!-- ko foreach: page.Tabs -->
+							<div class="tab-content" data-bind="visible: $data.IsVisible" >
+								<div class="messages-area style-9" data-bind="scrollToBottom : $data.ScrollToBottom" >
+									<!-- ko foreach: $data.MessagesList -->
+									<div class="message-from-user" >
+										<table class="message-table" cellspacing="0" cellpadding="0" >
+											<tr>
+												<td class="user-info-td" >
+													<div class="user-info" >
+														<div data-bind="style: { 'background-image' : 'url(' + $data.AvatarUrl() + ')' }" class="user-image" >
+														</div>
+														<div class="user-name" data-bind="text: $data.UserName" ></div>
+														<div class="message-date"  data-bind="text: $data.Time"  ></div>
+													</div>
+												</td>
+												<td class="message-td" >
+													<div data-bind="html: $data.TextWithSmiles()" class="message-content ui raised segment" ></div>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<!-- /ko -->
+								</div>
+								<div class="input-area" >
+									<div class="input-block" >
+										<div class="text-area-wrapper" >
+											<textarea placeholder="Please enter a message ( ctr + enter = send message )" data-bind="value: $data.CurrentMessage, valueUpdate: 'afterkeydown', fireIfCntlEnter: $data.Send" ></textarea>
+										</div>
+									</div>
+									<div class="controls-block" >
+										<div class="extra-cotnrols" > 
+										<div class="ready-answers" >
+									<div class="ui right  icon button">
+									  <i class="right book icon"></i>
+									  Answers
+									  <div  class="answers-drop-down-wrapper"  >
+										<div class="answers-drop-down ui segment" >
+											<ul class="ui list" data-bind="foreach: page.Questions" >
+											  <li data-bind="click: $parent.SelectAnswer.bind($data), text: $data"  ></li>
+											</ul>
+										</div>
+									</div>
+									</div>
+											</div>
+											<div class="smiles-line" >
+												<!-- ko foreach: page.Smiles -->
+													<div data-bind="click: $parent.AddSmile.bind($data, $data.Code()), attr : { title: $data.Code() }, style: { 'background-image' : 'url(' + $data.Path() + ')' }"  class="smile" ></div>
+												<!-- /ko -->
+											</div>
+										</div>
+										<div data-bind="click: $data.Send" class="send-button" >
+											<a class="ui fluid red button">
+											<i class="mail icon"></i>Send</a>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<!-- /ko -->
+							
+						</div>
+					</div>
+				</div>
+				<div class="footer" >
+					<span>
+						Chat Server 2014
+					</span>
+				</div>
+			</div>
+			<script type="text/html" id="user-template" >
+												<div class="item" data-bind="click: $data.Clicked" >
+													<div class="user-icon" >
+														<i class="user icon"></i>
+													</div>
+													<div class="user-name" data-bind="attr: { title: $data.Name }" >
+														<span data-bind="text: $data.Name" ></span> 
+														<div data-bind="visible: $data.NewMessagesCount() != 0, text: $data.NewMessagesCount" class="message-info" ></div>
+													</div>
+												</div>
+			</script>
+			
+			<script src="javascript/common-scripts.js" ></script>
+			<script src="javascript/custom-binders.js" ></script>
+			<script src="javascript/chat.js" ></script>
+		</body>
+</html>

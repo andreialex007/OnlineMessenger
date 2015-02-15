@@ -1,0 +1,6 @@
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\bin\Release\OnlineMessenger.Domain.dll.config
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\bin\Release\OnlineMessenger.Domain.dll
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\bin\Release\OnlineMessenger.Domain.pdb
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\obj\Release\OnlineMessenger.Domain.csprojResolveAssemblyReference.cache
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\obj\Release\OnlineMessenger.Domain.dll
+D:\OnlineMessenger\application\master\OnlineMessenger.Domain\obj\Release\OnlineMessenger.Domain.pdb

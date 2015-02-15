@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<MailConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Subject>Message from {0} - online messenger user</Subject>
+  <To>Ivanov123512@ya.ru</To>
+  <From>Ivanov123512@ya.ru</From>
+  <FromPassword>lkkIvan3223512</FromPassword>
+  <SmtpHost>smtp.yandex.com</SmtpHost>
+  <SmtpPort>25</SmtpPort>
+  <Ssl>false</Ssl>
+</MailConfiguration>

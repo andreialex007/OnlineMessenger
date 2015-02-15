@@ -1,0 +1,66 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/login.css")" />
+}
+@section pagescripts{
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.maskedinput.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Common/common-scripts.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Common/custom-binders.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Login/LoginPage.js")"></script>
+    <script>
+        var page = null;
+        $(function () {
+            page = new LoginPage();
+            ko.applyBindings(page);
+        });
+    </script>
+}
+
+<div class="login-box">
+    <div class="ui form segment">
+        <div class="field">
+            <label>Имя пользователя</label>
+            <div class="ui left labeled icon input">
+                <input data-bind="value: page.UserName, valueUpdate: 'afterkeydown'" type="text" placeholder="Имя пользователя">
+                <i class="user icon"></i>
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label>Пароль</label>
+            <div class="ui left labeled icon input">
+                <input data-bind="value: page.Password, valueUpdate: 'afterkeydown'" placeholder="Пароль" type="password">
+                <i class="lock icon"></i>
+                <div class="ui corner label">
+                    <i class="icon asterisk"></i>
+                </div>
+            </div>
+        </div>
+        <div data-bind="fadeVisible: page.IsHideErrorMessages" class="ui warning message">
+            <div class="header">Мы обнаружили некоторые проблемы</div>
+            <div data-bind="text: page.Errors"></div>
+        </div>
+        <div class="bottom-controls">
+            <div class="remember-me-box">
+                <label class="ui blue label">
+                    <input type="checkbox" data-bind="checked: page.RememberMe" /> Запомнить меня
+                </label>
+            </div>
+            <div class="button-placeholder">
+                <div data-bind="click: page.LoginClick, css: { 'disabled' : page.IsLoginButtonDisabled }" class="ui right red down button">
+                    <i data-bind="css: { 'force-hide' : page.IsLoadingIconHidden } " class="loading icon "></i>
+                    <i data-bind="css: { 'force-hide' : page.IsUserIconHidden } " class="user icon force-hide"></i>
+                    Login
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

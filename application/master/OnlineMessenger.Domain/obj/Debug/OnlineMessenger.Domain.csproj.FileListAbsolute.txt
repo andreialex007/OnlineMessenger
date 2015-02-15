@@ -1,0 +1,6 @@
+C:\OnlineConsultant\master\OnlineMessenger.Domain\bin\Debug\OnlineMessenger.Domain.dll.config
+C:\OnlineConsultant\master\OnlineMessenger.Domain\bin\Debug\OnlineMessenger.Domain.dll
+C:\OnlineConsultant\master\OnlineMessenger.Domain\bin\Debug\OnlineMessenger.Domain.pdb
+C:\OnlineConsultant\master\OnlineMessenger.Domain\obj\Debug\OnlineMessenger.Domain.csprojResolveAssemblyReference.cache
+C:\OnlineConsultant\master\OnlineMessenger.Domain\obj\Debug\OnlineMessenger.Domain.dll
+C:\OnlineConsultant\master\OnlineMessenger.Domain\obj\Debug\OnlineMessenger.Domain.pdb

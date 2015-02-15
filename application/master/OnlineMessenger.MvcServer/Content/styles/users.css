@@ -1,0 +1,40 @@
+/* Id */
+.table-header td:nth-child(2), .scrolling-table td:nth-child(2){
+	width: 50px;
+}
+
+/* Created */
+.table-header td:nth-child(6), .scrolling-table td:nth-child(6){
+	width: 200px;
+}
+/* messages count */
+.table-header td:nth-child(7), .scrolling-table td:nth-child(7){
+	width: 80px;
+}
+
+/* roles */
+.table-header td:nth-child(5), .scrolling-table td:nth-child(5){
+	width: 200px;
+}
+
+
+/* email */
+.table-header td:nth-child(4), .scrolling-table td:nth-child(4){
+	width: 200px;
+}
+
+/* UserName */
+.sorting-cell{
+	background-color: #fafafa !important;
+}
+
+
+.from-date .calendar:hover{
+	opacity: 1.0 !important;
+	cursor: pointer !important;
+}
+
+.go-to-list-label {
+    cursor: pointer;
+}
+

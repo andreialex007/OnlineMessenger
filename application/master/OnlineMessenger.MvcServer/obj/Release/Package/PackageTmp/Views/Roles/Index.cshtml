@@ -1,0 +1,36 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/semantic/css/semantic.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/roles.css")" />
+}
+@section pagescripts{
+    <script src='@Url.Content("~/Content/javascript/Common/common-scripts.js")'></script>
+    <script src="@Url.Content("~/Content/javascript/Common/custom-binders.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Cell.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Column.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Field.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/FieldDefinition.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/LeftPanel.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/ResultsArea.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Row.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Table.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/UsersPage.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Roles/Index/RolesPage.js")"></script>
+    <script>
+        var page = null;
+        $(function () {
+            page = new RolesPage();
+            ko.applyBindings(page);
+            page.Init();
+        });
+    </script>
+}
+
+@Html.Partial("AdminTable/_LeftPanel")
+@Html.Partial("AdminTable/_MainArea")

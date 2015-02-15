@@ -1,0 +1,101 @@
+﻿@using OnlineMessenger.MvcServer.Tools
+
+@{
+    Layout = null;
+    var siteUrl = ViewContext.HttpContext.Request.Url.AbsoluteUri.TrimEnd(ViewContext.HttpContext.Request.Url.AbsolutePath.ToCharArray());
+    var signalRUrl = string.Format("{0}/signalr", siteUrl);
+}
+
+
+<div class="main-chat-wrapper">
+    <link rel="stylesheet" href="@Html.Absolute("~/Content/styles/style.css")" />
+    <link rel="stylesheet" href="@Html.Absolute("~/Content/styles/semantic/css/semantic.css")" />
+
+    <script src="@Html.Absolute("~/Content/javascript/Libs/jquery-2.0.3.min.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/jquery.cookie.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/knockout-3.0.0.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/knockout.mapping-latest.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/linq.min.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/moment.min.js")"></script>
+    <script>
+
+        var controller = '@ViewContext.RouteData.Values["controller"]';
+        function getUrl(path) {
+            return "/" + controller + path;
+        }
+    </script>
+
+    <script>
+        var currentUserName = '@ViewContext.Controller.ControllerContext.HttpContext.User.Identity.Name';
+    </script>
+
+    <script src="@Html.Absolute("~/Content/javascript/Libs/jquery.signalR-2.0.2.js")"></script>
+    
+    <script src="@Html.Absolute("~/Content/javascript/Common/common-scripts.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Common/custom-binders.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/Message.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/Smile.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/SmilesList.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/UserPage/UserMessage.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/UserPage/UserPage.js")"></script>
+    <script src="@Html.Absolute("~/signalr/hubs")"></script>
+    <script>
+        $.connection.hub.url = '@signalRUrl';
+        urlPrefix = '@siteUrl';
+        var page = null;
+        $(function () {
+            page = new UserPage();
+            ko.applyBindings(page);
+            page.Init();
+        });
+    </script>
+
+    <div class="chat-container">
+        
+        <div class="chat-placeholder">
+
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="ui  raised segment" style="background: aliceblue; border: 1px solid lightgray; " >
+
+                        <h4 >
+                            <i class="icon inverted circular red chat out "></i> Пожалуйста введите сообщение
+                        </h4>
+                        
+                        <div class="ui comments">
+                            <div data-bind="scrollToBottom : page.ScrollToBottom" class="messages-list style-9">
+                                <!-- ko foreach: page.UserMessages -->
+                                <div class="message-from-user">
+                                    <table class="message-table" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td class="user-info-td-box">
+                                                <div class="user-info">
+                                                    <div data-bind="style: { 'background-image' : 'url(' + $data.AvatarUrl() + ')' }" class="user-image">
+                                                    </div>
+                                                    <div data-bind="text: $data.UserName" class="user-name"></div>
+                                                </div>
+                                            </td>
+                                            <td class="message-td">
+                                                <div data-bind="html: $data.TextWithSmiles()" class="message-content ui raised segment"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- /ko -->
+                            </div>
+
+                            <form class="ui reply form">
+                                <div class="field">
+                                    <textarea placeholder="Пожалуйста введите сообщение" data-bind="value: page.MessageTextArea, valueUpdate: 'afterkeydown'"></textarea>
+                                </div>
+                                <div data-bind="click: page.SendMessage" class="ui fluid black labeled submit icon button">
+                                    <i class="icon edit"></i> Отправить
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

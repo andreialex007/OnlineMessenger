@@ -1,0 +1,30 @@
+.role{
+	margin: 10px 0px 10px 0px;
+}
+
+.save-button  i.icon{
+	background-color: transparent !important;
+	-webkit-box-shadow: none !important;
+}
+
+.main-area-content{
+	overflow-y: auto;
+	padding-right: 10px;
+	
+}
+
+.edit-user{
+}
+
+.hidden{
+	display: none !important;
+}
+
+.save-result{
+	display: inline-block;
+}
+
+.remove-new-user{
+float: right;
+cursor: pointer;
+}

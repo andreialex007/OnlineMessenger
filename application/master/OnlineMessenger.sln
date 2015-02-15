@@ -1,0 +1,141 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A95779EA-11BB-4F7B-A639-6D63FE8977A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{090AF9E0-93A1-4E9B-9814-E60C50C67159}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "OnlineMessenger.Domain", "Modeling\OnlineMessenger.Domain.modelproj", "{966A0DD0-71A8-4A78-9887-961474B5B150}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modeling", "Modeling", "{180F614C-0CFD-476F-82E9-62CC43AD8471}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D73CBACE-525D-40CC-94EB-F0255861ED57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{B8CCEC60-BB7B-4AE1-85AA-E6CCF9C04C2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B6DECA5B-247A-4BE1-AFE6-AC2A71A1D4B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Domain", "OnlineMessenger.Domain\OnlineMessenger.Domain.csproj", "{83D2E464-54A1-4855-91BC-68B85DECD17B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Data.Ef", "OnlineMessenger.Data.Ef\OnlineMessenger.Data.Ef.csproj", "{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Domain.Tests.Unit", "OnlineMessenger.Domain.Tests.Unit\OnlineMessenger.Domain.Tests.Unit.csproj", "{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Data.Ef.Tests.Integration", "OnlineMessenger.Data.Ef.Tests.Integration\OnlineMessenger.Data.Ef.Tests.Integration.csproj", "{D0C5FC32-1393-475F-93CA-BC5CE8C7935B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.MvcServer", "OnlineMessenger.MvcServer\OnlineMessenger.MvcServer.csproj", "{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.TestUtils", "OnlineMessenger.TestUtils\OnlineMessenger.TestUtils.csproj", "{286F7D73-CEF3-4D8F-B649-201CCD85016C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Mailer", "OnlineMessenger.Mailer\OnlineMessenger.Mailer.csproj", "{27D03E4C-1162-4E6F-B802-B46450B50796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMessenger.Mailer.Tests", "OnlineMessenger.Mailer.Tests\OnlineMessenger.Mailer.Tests.csproj", "{4A84F53D-40A8-45DC-B64D-9EB00BFD8099}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 10
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://notebook-pc:8080/tfs/development
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = OnlineMessenger.Domain\\OnlineMessenger.Domain.csproj
+		SccProjectTopLevelParentUniqueName1 = OnlineMessenger.sln
+		SccProjectName1 = OnlineMessenger.Domain
+		SccLocalPath1 = OnlineMessenger.Domain
+		SccProjectUniqueName2 = OnlineMessenger.Data.Ef\\OnlineMessenger.Data.Ef.csproj
+		SccProjectTopLevelParentUniqueName2 = OnlineMessenger.sln
+		SccProjectName2 = OnlineMessenger.Data.Ef
+		SccLocalPath2 = OnlineMessenger.Data.Ef
+		SccProjectUniqueName3 = OnlineMessenger.Domain.Tests.Unit\\OnlineMessenger.Domain.Tests.Unit.csproj
+		SccProjectTopLevelParentUniqueName3 = OnlineMessenger.sln
+		SccProjectName3 = OnlineMessenger.Domain.Tests.Unit
+		SccLocalPath3 = OnlineMessenger.Domain.Tests.Unit
+		SccProjectUniqueName4 = OnlineMessenger.Data.Ef.Tests.Integration\\OnlineMessenger.Data.Ef.Tests.Integration.csproj
+		SccProjectTopLevelParentUniqueName4 = OnlineMessenger.sln
+		SccProjectName4 = OnlineMessenger.Data.Ef.Tests.Integration
+		SccLocalPath4 = OnlineMessenger.Data.Ef.Tests.Integration
+		SccProjectUniqueName5 = OnlineMessenger.MvcServer\\OnlineMessenger.MvcServer.csproj
+		SccProjectTopLevelParentUniqueName5 = OnlineMessenger.sln
+		SccProjectName5 = OnlineMessenger.MvcServer
+		SccLocalPath5 = OnlineMessenger.MvcServer
+		SccProjectUniqueName6 = OnlineMessenger.TestUtils\\OnlineMessenger.TestUtils.csproj
+		SccProjectTopLevelParentUniqueName6 = OnlineMessenger.sln
+		SccProjectName6 = OnlineMessenger.TestUtils
+		SccLocalPath6 = OnlineMessenger.TestUtils
+		SccProjectUniqueName7 = OnlineMessenger.Mailer\\OnlineMessenger.Mailer.csproj
+		SccProjectTopLevelParentUniqueName7 = OnlineMessenger.sln
+		SccProjectName7 = OnlineMessenger.Mailer
+		SccLocalPath7 = OnlineMessenger.Mailer
+		SccProjectUniqueName8 = OnlineMessenger.Mailer.Tests\\OnlineMessenger.Mailer.Tests.csproj
+		SccProjectTopLevelParentUniqueName8 = OnlineMessenger.sln
+		SccProjectName8 = OnlineMessenger.Mailer.Tests
+		SccLocalPath8 = OnlineMessenger.Mailer.Tests
+		SccProjectUniqueName9 = Modeling\\OnlineMessenger.Domain.modelproj
+		SccProjectTopLevelParentUniqueName9 = OnlineMessenger.sln
+		SccProjectName9 = Modeling
+		SccLocalPath9 = Modeling
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{966A0DD0-71A8-4A78-9887-961474B5B150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{966A0DD0-71A8-4A78-9887-961474B5B150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{966A0DD0-71A8-4A78-9887-961474B5B150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{966A0DD0-71A8-4A78-9887-961474B5B150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D2E464-54A1-4855-91BC-68B85DECD17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D2E464-54A1-4855-91BC-68B85DECD17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D2E464-54A1-4855-91BC-68B85DECD17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D2E464-54A1-4855-91BC-68B85DECD17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C5FC32-1393-475F-93CA-BC5CE8C7935B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C5FC32-1393-475F-93CA-BC5CE8C7935B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C5FC32-1393-475F-93CA-BC5CE8C7935B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C5FC32-1393-475F-93CA-BC5CE8C7935B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{286F7D73-CEF3-4D8F-B649-201CCD85016C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{286F7D73-CEF3-4D8F-B649-201CCD85016C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{286F7D73-CEF3-4D8F-B649-201CCD85016C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{286F7D73-CEF3-4D8F-B649-201CCD85016C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D03E4C-1162-4E6F-B802-B46450B50796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D03E4C-1162-4E6F-B802-B46450B50796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D03E4C-1162-4E6F-B802-B46450B50796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D03E4C-1162-4E6F-B802-B46450B50796}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A84F53D-40A8-45DC-B64D-9EB00BFD8099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A84F53D-40A8-45DC-B64D-9EB00BFD8099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A84F53D-40A8-45DC-B64D-9EB00BFD8099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A84F53D-40A8-45DC-B64D-9EB00BFD8099}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EC086DEF-C9F0-4FDB-B6C5-D91B893124F4} = {A95779EA-11BB-4F7B-A639-6D63FE8977A6}
+		{D0C5FC32-1393-475F-93CA-BC5CE8C7935B} = {A95779EA-11BB-4F7B-A639-6D63FE8977A6}
+		{286F7D73-CEF3-4D8F-B649-201CCD85016C} = {A95779EA-11BB-4F7B-A639-6D63FE8977A6}
+		{4A84F53D-40A8-45DC-B64D-9EB00BFD8099} = {A95779EA-11BB-4F7B-A639-6D63FE8977A6}
+		{966A0DD0-71A8-4A78-9887-961474B5B150} = {180F614C-0CFD-476F-82E9-62CC43AD8471}
+		{C6CC7604-0A26-4735-8538-2FC0FE4E7F7E} = {D73CBACE-525D-40CC-94EB-F0255861ED57}
+		{27D03E4C-1162-4E6F-B802-B46450B50796} = {D73CBACE-525D-40CC-94EB-F0255861ED57}
+		{FC1F1F43-C5DA-456C-BD47-0056A2CBE01D} = {B8CCEC60-BB7B-4AE1-85AA-E6CCF9C04C2E}
+		{83D2E464-54A1-4855-91BC-68B85DECD17B} = {B6DECA5B-247A-4BE1-AFE6-AC2A71A1D4B0}
+	EndGlobalSection
+EndGlobal

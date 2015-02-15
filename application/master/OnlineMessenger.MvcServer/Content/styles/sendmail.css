@@ -1,0 +1,17 @@
+﻿body {
+}
+
+.messages-list {
+    height: auto !important;
+}
+
+.chat-placeholder {
+    height: 200 !important;
+}
+
+.captcha-first-field {
+    width: 100px !important;
+}
+.captcha-second-field {
+    width: 355px !important;
+}

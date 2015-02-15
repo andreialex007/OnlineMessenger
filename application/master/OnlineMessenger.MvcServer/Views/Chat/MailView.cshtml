@@ -1,0 +1,83 @@
+﻿@using OnlineMessenger.MvcServer.Tools
+
+@{
+    Layout = null;
+    var siteUrl = ViewContext.HttpContext.Request.Url.AbsoluteUri.TrimEnd(ViewContext.HttpContext.Request.Url.AbsolutePath.ToCharArray());
+}
+
+<div class="main-chat-wrapper">
+    <link rel="stylesheet" href="@Html.Absolute("~/Content/styles/style.css")" />
+    <link rel="stylesheet" href="@Html.Absolute("~/Content/styles/sendmail.css")" />
+    <link rel="stylesheet" href="@Html.Absolute("~/Content/styles/semantic/css/semantic.css")" />
+
+    <script src="@Html.Absolute("~/Content/javascript/Libs/jquery-2.0.3.min.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/jquery.cookie.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/knockout-3.0.0.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/knockout.mapping-latest.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/linq.min.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Libs/moment.min.js")"></script>
+    <script>
+        var controller = '@ViewContext.RouteData.Values["controller"]';
+        function getUrl(path) {
+            return "/" + controller + path;
+        }
+    </script>
+
+    <script>
+        var currentUserName = '@ViewContext.Controller.ControllerContext.HttpContext.User.Identity.Name';
+    </script>
+    <script src="@Html.Absolute("~/Content/javascript/Common/common-scripts.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Common/custom-binders.js")"></script>
+    <script src="@Html.Absolute("~/Content/javascript/Models/Chat/UserPage/SendMail.js")"></script>
+    <script>
+        urlPrefix = '@siteUrl';
+        var page = null;
+        $(function () {
+            page = new SendMail();
+            ko.applyBindings(page);
+        });
+    </script>
+
+    <div class="chat-container">
+        <div class="chat-placeholder">
+            <div class="ui two column grid">
+                <div class="column">
+                    <div class="ui  raised segment" style="background: aliceblue; border: 1px solid lightgray; ">
+                        <h4>
+                            <i class="icon mail "></i> К сожалению ни кого из операторов нет на месте, отправть email сообщение
+                        </h4>
+                        <div class="ui divider"></div>
+                        <div class="ui form">
+                            <div class="field">
+                                <input data-bind="value: page.Email, valueUpdate: 'afterkeydown'" placeholder="Email" type="text">
+                            </div>
+                        </div>
+                        <div class="ui form">
+                            <div class="field">
+                                <input data-bind="value: page.UserName, valueUpdate: 'afterkeydown'" placeholder="Имя пользователя" type="text">
+                            </div>
+                        </div>
+                        <div class="ui comments">
+                            <form class="ui reply form">
+                                <div class="field">
+                                    <textarea placeholder="Ваше сообщение" data-bind="value: page.Message, valueUpdate: 'afterkeydown'"></textarea>
+                                </div>
+                                <div class="two fields">
+                                    <div class="field captcha-first-field">
+                                        <img src="@Html.Absolute("~/Chat/GetCaptcha")" />
+                                    </div>
+                                    <div class="field captcha-second-field">
+                                        <input data-bind="value: page.Code, valueUpdate: 'afterkeydown'" placeholder="Код с картинки" type="text">
+                                    </div>
+                                </div>
+                                <div data-bind="click: page.Send" class="ui fluid black labeled submit icon button">
+                                    <i class="icon edit"></i> Отправить сообщение
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

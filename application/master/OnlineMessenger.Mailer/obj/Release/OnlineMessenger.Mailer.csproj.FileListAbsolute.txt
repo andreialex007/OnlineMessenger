@@ -1,0 +1,8 @@
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\bin\Release\MailConfiguration.xml
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\bin\Release\OnlineMessenger.Mailer.dll
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\bin\Release\OnlineMessenger.Mailer.pdb
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\bin\Release\OnlineMessenger.Domain.dll
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\bin\Release\OnlineMessenger.Domain.pdb
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\obj\Release\OnlineMessenger.Mailer.csprojResolveAssemblyReference.cache
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\obj\Release\OnlineMessenger.Mailer.dll
+D:\OnlineMessenger\application\master\OnlineMessenger.Mailer\obj\Release\OnlineMessenger.Mailer.pdb

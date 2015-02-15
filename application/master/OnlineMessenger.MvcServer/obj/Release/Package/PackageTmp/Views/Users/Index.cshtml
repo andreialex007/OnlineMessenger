@@ -1,0 +1,45 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section pagestyles{
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/table.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/semantic/css/semantic.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/users.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/javascript/Libs/datepicker/css/datepicker.css")" />
+}
+@section pagescripts{
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.maskedinput.min.js")"></script>
+
+    <!-- datepicker stuff -->
+    <script src="@Url.Content("~/Content/javascript/Libs/datepicker/js/jquery.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/datepicker/js/datepicker.js")"></script>
+    <script type="text/javascript">
+        var jq_1_32 = $.noConflict(true);
+    </script>
+
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Cell.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Column.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Field.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/FieldDefinition.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/LeftPanel.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/ResultsArea.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Row.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/Table.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Models/Users/Index/UsersPage.js")"></script>
+    <script>
+        var page = null;
+        $(function () {
+            page = new UsersPage();
+            ko.applyBindings(page);
+            page.Init();
+        });
+    </script>
+}
+
+
+@Html.Partial("AdminTable/_LeftPanel")
+@Html.Partial("AdminTable/_MainArea")
+

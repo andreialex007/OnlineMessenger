@@ -1,0 +1,8 @@
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\bin\Debug\MailConfiguration.xml
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\bin\Debug\OnlineMessenger.Mailer.dll
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\bin\Debug\OnlineMessenger.Mailer.pdb
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\bin\Debug\OnlineMessenger.Domain.dll
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\bin\Debug\OnlineMessenger.Domain.pdb
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\obj\Debug\OnlineMessenger.Mailer.csprojResolveAssemblyReference.cache
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\obj\Debug\OnlineMessenger.Mailer.dll
+C:\OnlineConsultant\master\OnlineMessenger.Mailer\obj\Debug\OnlineMessenger.Mailer.pdb

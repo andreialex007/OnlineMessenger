@@ -1,0 +1,37 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title></title>
+		</head>
+		<body>
+			<div class="chat-loader" > 
+				<link rel="stylesheet" href="http://localhost:52059/Content/styles/style.css" />
+				<link rel="stylesheet" href="http://localhost:52059/Content/styles/semantic/css/semantic.css" />		
+				<script src="http://code.jquery.com/jquery-latest.js" ></script>
+				<script >
+					var $chat = $.noConflict();
+					var isChatInitialized = false;
+					$chat(function(){
+						$chat(".chat-call-button").click(function(){
+							$chat(".chat-placement").toggle("slow");
+							if(!isChatInitialized){
+								$chat(".chat-placement").append("<iframe id='load-iframe'  src='http://localhost:52059/Chat/UserPage' ></iframe>");
+								isChatInitialized = true;
+							}
+						});
+					});
+				</script>				
+				<script type="text/javascript">
+					
+				</script>
+				<div class="chat-placement" >placeholder</div>
+				<div class="chat-call-button" >
+					<div class="ui down button">
+					  <i class="user icon"></i>
+					  Press to call operator
+					</div>
+				</div>
+			</div>
+		</body>
+	</html>

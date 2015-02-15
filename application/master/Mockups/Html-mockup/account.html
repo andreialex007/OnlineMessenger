@@ -1,0 +1,271 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title>Main page</title>
+			<!-- common styles -->
+			<link rel="stylesheet" href="style.css" />
+			<link rel="stylesheet" href="table.css" />
+			<link rel="stylesheet" href="edituser.css" />
+			<link rel="stylesheet" href="account.css" />
+			<link rel="stylesheet" href="semantic/css/semantic.css" />
+			<!-- /common styles -->
+			
+			<!-- common scripts -->
+			<script src="javascript/jquery-2.0.3.min.js" ></script>
+			<script src="javascript/knockout-3.0.0.js" ></script>
+			<script src="javascript/knockout.mapping-latest.js" ></script>
+			<script src="javascript/linq.min.js" ></script>
+			<script src="javascript/moment.min.js" ></script>
+			<!-- /common scripts -->
+			
+			<script src="javascript/common-scripts.js" ></script>
+			<script src="javascript/custom-binders.js" ></script>
+			
+			<script>
+				function AccountPage(){
+					var self = {};
+					self.SaveButton = new SaveButton(function(){
+						page.SaveButton.IsSaving(true);
+						var isValid = self.ValidateForm();
+						page.SaveButton.IsSaving(isValid);
+						page.SaveButton.SetResult(isValid == false ? "Error" : "Success");
+						if(isValid == true){
+							console.log("ajax query");
+						}
+					});
+					
+					self.UserName = ko.observable("");
+					
+					
+					self.AudioNotificationsEnabled = ko.observable(false);
+					self.VisualNotificationsEnabled = ko.observable(false);
+					self.IsChangePassword = ko.observable(false);
+					self.Errors = ko.observableArray([]);
+					self.IsShowErrors = ko.observable(false);
+					self.Email = ko.observable("");
+					self.Password = ko.observable("");
+					self.PasswordConfirm = ko.observable("");
+					
+					self.ValidateForm = function(){
+						self.Errors([]);
+						if(!validateEmail(self.Email())){
+							self.Errors.push("Wrong email format");
+						}
+						if(!self.UserName()){
+							self.Errors.push("User name required");
+						}
+						if(self.IsChangePassword()){
+							if(!self.Password() || !self.PasswordConfirm()){
+								self.Errors.push("Password and password confurm fields cannot be empty");
+							}
+							if(self.Password() != self.PasswordConfirm()){
+								self.Errors.push("Password and confirmation not equals");
+							}
+						}
+						var validateResult = self.Errors().length == 0;
+						self.IsShowErrors(!validateResult);
+						return validateResult;
+					}
+					return self;
+				}
+			
+			
+			
+				function SaveButton(clickFunction){
+					var self = this;
+					self.SavingTexts = {
+						Saving: "Saving...",
+						Save: "Save "
+					};
+					self.SaveText = ko.observable(self.SavingTexts.Save);
+					self._isSaving = ko.observable(false);
+					self.IsSaving = ko.computed({
+						read: function(){
+							return self._isSaving();
+						},
+						write: function(value){
+							self._isSaving(value);
+							self.SaveText(value ? self.SavingTexts.Saving : self.SavingTexts.Save )
+						}
+					});
+					self.IsSuccessVisible = ko.observable(false);
+					self.IsErrorVisible = ko.observable(false);
+					self.SetResult = function(result){
+						if(result == "Success"){
+							self.IsSuccessVisible(true);
+						}
+						if(result == "Error"){
+							self.IsErrorVisible(true);
+						}
+						setTimeout(function(){
+							self.IsSuccessVisible(false);
+							self.IsErrorVisible(false);
+						},500);
+					}
+					
+					self.IsSaving(false);
+					self.OnSave = clickFunction;
+				}
+			
+			var page = null;
+			$(function(){
+				page = new AccountPage();
+				ko.applyBindings(page);
+			});
+			
+			</script>
+			
+		</head>
+		<body  >
+			<div class="page-background" ></div>
+			<div class="root" >
+				<div class="header" >
+					<div class="header-left" >
+						<div class="user-info-box" >
+							<div class="avatar" >
+							</div>
+							<div class="user-name" >Admin</div>
+							<div class="messages" ><span>messages</span> <div class="ui blue circular label">22</div></div>
+						</div>
+					</div>
+					<div class="header-right" >
+						<div class="menu" >
+							<div class="item" ><a href="#" > <i class="dashboard icon"></i>Dashboard</a></div> 
+							<div class="item " ><a href="#" ><i class="chat icon"></i>Chat</a></div>
+							<div class="item" ><a href="#" ><i class="mail icon"></i>Messages</a></div>
+							<div class="item" ><a href="#" ><i class="users icon"></i>Users</a></div>
+							<div class="item" ><a href="#" ><i class="user icon"></i>Roles</a></div>
+							<div class="item active" ><a href="#" ><i class="settings icon"></i>Account</a></div>
+						</div>
+						<div class="logoff-box" ></div>
+					</div>
+				</div>
+				<div class="content" >
+					<div class="left-panel" >
+					
+						<div class="panel-content" >
+						<div class="panel-title">
+								<i class="laptop icon"></i> Actions
+							</div>
+							<div class="search-item save-button" >
+								<!--ko with: page.SaveButton -->
+									<div data-bind="click: OnSave, css: { 'disabled' : IsSaving() }" class="ui   red icon button">
+									  <i class="loading icon"  data-bind="css: { 'hidden' : !IsSaving() }" ></i>
+									  <i class="save icon" data-bind="css: { 'hidden' : IsSaving() }"  ></i>
+									  <span class="save-text"  ><span data-bind="text: SaveText" ></span></span>
+									</div>
+									<div class="save-result" >
+										<label data-bind="dissmissSlowVisible: IsSuccessVisible" ><i class="checkmark green icon"  ></i> Success</label>
+										<label data-bind="dissmissSlowVisible: IsErrorVisible"  ><i class="remove red icon"  ></i> Error</label>
+									</div>
+								<!-- /ko -->	
+								
+							</div>
+							
+						</div>
+					</div>
+					
+					<div class="main-area">
+						<div class="main-area-content style-9">
+							
+							
+							
+											<div class="edit-user">
+											<h4 class="ui black block header"><i class="text file icon"></i> User settings</h4>
+
+											
+											
+										
+										<div class="ui warning form">
+										<div class="ui warning message" data-bind="fadeVisible: page.IsShowErrors"  >
+											<div class="header">Could you check something!</div>
+											<ul data-bind="foreach: page.Errors " class="list">
+											  <li data-bind="text: $data" ></li>
+											</ul>
+										  </div>
+										
+											<div class="two fields">
+					  <div class="field">
+											<label>Username</label>
+											<div class="ui left labeled icon input">
+											  <input maxlength="255" data-bind="value: page.UserName, valueUpdate: 'afterkeydown'"  type="text" placeholder="Username">
+											  <i class="user icon"></i>
+											  <div class="ui corner label">
+												<i class="icon asterisk"></i>
+											  </div>
+											</div>
+										  </div>
+					  <div class="field">
+											<label>Email</label>
+											<div class="ui left labeled icon input">
+											  <input maxlength="255"  data-bind="value: page.Email, valueUpdate: 'afterkeydown'"  type="text" placeholder="Email">
+											  <i class="mail icon"></i>
+											  <div class="ui corner label">
+												<i class="icon asterisk"></i>
+											  </div>
+											</div>
+										  </div>
+					</div>
+										  <div class="field">	
+											<label><input data-bind="checked: page.IsChangePassword" type="checkbox"> Change Password</label>
+										  </div>
+										  <div data-bind="fadeVisible: page.IsChangePassword" class="password-fields" style="display: none;">
+											<div class="field">
+												<label>Password</label>
+												<div class="ui left labeled icon input">
+												  <input maxlength="255"  data-bind="value: $data.Password, valueUpdate: 'afterkeydown'"   type="password">
+												  <i class="lock icon"></i>
+												  <div class="ui corner label">
+													<i class="icon asterisk"></i>
+												  </div>
+												</div>
+											  </div>
+											  <div class="field">
+												<label>Retype password</label>
+												<div class="ui left labeled icon input">
+												  <input maxlength="255"  data-bind="value: $data.PasswordConfirm, valueUpdate: 'afterkeydown'"  type="password">
+												  <i class="lock icon"></i>
+												  <div class="ui corner label">
+													<i class="icon asterisk"></i>
+												  </div>
+												</div>
+											  </div>
+										  </div>
+										  
+										
+										
+										  
+										  
+										</div>
+											<div class="ui section divider"></div>
+											
+											<h4 class="ui black block header"><i class="text settings icon"></i> Chat settings</h4>
+											
+											 <div class="role" >
+												<label> <input  type="checkbox" data-bind="checked: page.AudioNotificationsEnabled"  name="walk"> <span  >Enable new messages audio notifications</span></label>
+											  </div>
+											 <div class="role" >
+												<label> <input  type="checkbox" data-bind="checked: page.VisualNotificationsEnabled"   name="walk"> <span  >Enable new messages visual notifications</span></label>
+											  </div>
+											
+											
+										</div>
+							
+							
+											
+							
+							
+							</div>
+					</div>
+					
+				</div>
+				<div class="footer" >
+					<span>
+						Chat Server 2014
+					</span>
+				</div>
+			</div>
+
+		</body>
+</html>

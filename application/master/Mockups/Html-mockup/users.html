@@ -1,0 +1,239 @@
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8" />
+			<title>Main page</title>
+			
+			<!-- common css -->
+			<link rel="stylesheet" href="style.css" />
+			<!-- /common css -->
+			
+			<!-- page css -->
+			<link rel="stylesheet" href="table.css" />
+			<link rel="stylesheet" href="semantic/css/semantic.css" />
+			<link rel="stylesheet" href="users.css" />
+			<link rel="stylesheet" href="datepicker/css/datepicker.css" />
+			<!-- /page css -->
+			
+			<!-- common scripts -->
+			<script src="javascript/jquery-2.0.3.min.js" ></script>
+			<script src="javascript/knockout-3.0.0.js" ></script>
+			<script src="javascript/knockout.mapping-latest.js" ></script>
+			<script src="javascript/linq.min.js" ></script>
+			<script src="javascript/moment.min.js" ></script>
+			<!-- /common scripts -->
+			
+			<!-- page scripts -->
+			<script src="javascript/jquery.maskedinput.min.js" ></script>
+			<script type="text/javascript" src="datepicker/js/jquery.js"></script>
+			<script type="text/javascript" src="datepicker/js/datepicker.js"></script>
+			<script type="text/javascript" >
+				var jq_1_32 = $.noConflict(true);
+			</script>
+			<!-- /page scripts -->
+		</head>
+		<body>
+			<div class="page-background" ></div>
+			<div class="root" >
+				<div class="header" >
+					<div class="header-left" >
+						<div class="user-info-box" >
+							<div class="avatar" >
+							</div>
+							<div class="user-name" >Admin</div>
+							<div class="messages" ><span>messages</span> <div class="ui blue circular label">22</div></div>
+						</div>
+					</div>
+					<div class="header-right" >
+						<div class="menu" >
+							<!-- <div class="item" ><a href="#" > <i class="dashboard icon"></i>Dashboard</a></div> -->
+							<div class="item" ><a href="#" ><i class="chat icon"></i>Chat</a></div>
+<!-- 
+							<div class="item" ><a href="#" ><i class="info icon"></i>Statistics</a></div>
+							<div class="item" ><a href="#" ><i class="calendar icon"></i>Calendar</a></div> -->
+							<div class="item" ><a href="#" ><i class="mail icon"></i>Messages</a></div>
+							<div class="item active" ><a href="#" ><i class="users icon"></i>Users</a></div>
+							<div class="item" ><a href="#" ><i class="user icon"></i>Roles</a></div>
+							<div class="item" ><a href="#" ><i class="settings icon"></i>Settings</a></div>
+						</div>
+						<div class="logoff-box" ></div>
+					</div>
+				</div>
+				<div class="content" >
+					<div class="left-panel" >
+						<div class="panel-content" >
+							<div class="panel-title" >
+								<i class="search icon"></i> Search
+							</div>
+							<div class="search-item" >
+									<label>User id</label>
+									<div class="input-line" >
+										<div class="ui fluid right icon input">
+										  <input data-bind="value: page.LeftPanel.UserIds, valueUpdate: 'afterkeydown', event: { keyup: page.LeftPanel.OnSearch}"  type="text" placeholder="Comma separated allowed" />
+										  
+										</div>
+									</div>
+							</div>
+							<div class="search-item" >
+									<label>User Name</label>
+									<div class="input-line" >
+										<div class="ui fluid right icon input">
+										  <input data-bind="value: page.LeftPanel.UserNames, valueUpdate: 'afterkeydown', event: { keyup: page.LeftPanel.OnSearch}"  type="text" placeholder="Comma separated allowed" />
+										  
+										</div>
+									</div>
+							</div>
+							<div class="search-item" >
+									<label>From date</label>
+									<div class="input-line from-date" >
+										<div class="ui fluid right icon input">
+										  <input  data-bind="value: page.LeftPanel.CreatedDate, valueUpdate: 'afterkeydown', event: { keyup: page.LeftPanel.OnSearch}, maskedInput: '99.99.9999'"  type="text" placeholder="Please select date" />
+										  <i data-bind="datePicker: page.LeftPanel.OnPickDate" class="calendar icon"></i>
+										</div>
+									</div>
+							</div>
+							<div class="search-item" >
+									<label>Email</label>
+									<div class="input-line" >
+										<div class="ui fluid right icon input">
+										  <input data-bind="value: page.LeftPanel.Email, valueUpdate: 'afterkeydown', event: { keyup: page.LeftPanel.OnSearch}"  type="text" placeholder="Comma separated allowed" />
+										  
+										</div>
+									</div>
+							</div>
+							<div class="search-item" >
+									<label>Roles</label>
+									<div class="input-line" >
+										<div class="ui fluid right icon input">
+										  <input data-bind="value: page.LeftPanel.Roles, valueUpdate: 'afterkeydown', event: { keyup: page.LeftPanel.OnSearch}"  type="text" placeholder="Comma separated allowed" />
+										  
+										</div>
+									</div>
+							</div>
+							
+							<div class="panel-title" >
+								<i class="laptop icon"></i> Actions
+							</div>
+							<div class="search-item" >
+									<div data-bind="click: page.LeftPanel.New" class="ui labeled icon button">
+									  <i class="file icon"></i>
+									  New
+									</div>
+							</div>
+						<div class="search-item" >
+									<div data-bind="css: { 'disabled': page.LeftPanel.EditDisabled }, click: page.LeftPanel.Edit" class="ui labeled icon button">
+									  <i class="pencil icon"></i>
+									  Edit
+									</div>
+							</div>
+								<div class="search-item"   >
+									<div class="ui labeled icon button"  data-bind="css: { 'disabled': page.LeftPanel.DeleteDisabled }, click: page.LeftPanel.Del" >
+									  <i class="delete icon"></i>
+									  Del
+									</div>
+							</div>
+						</div>
+					</div>
+					<div class="main-area" >
+						<div class="main-area-content" >
+							<div class="table-title" ><i class="users icon"></i> Users found <span>125</span>
+							
+							</div>
+							<div class="table-header" >
+								<table cellpadding="0" cellspacing="0" >
+									<tr >
+										<td><input data-bind="click : page.ResultsArea.Table.OnCheck, checked: page.ResultsArea.Table.Checked," type="checkbox" /></td>
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[0] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>Id</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[1] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>UserName</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[2] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>Email</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[3] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>Roles</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[4] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>Created</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										<!-- ko with: page.ResultsArea.Table.SortColumns()[5] -->
+											<td data-bind="css: { 'active': IsSort() }, click: OnClick, highLightColumn: true" class="sorted" >
+												<span>Messages</span>
+												<div class="sort-direction" >
+													<i data-bind="css: { 'down': IsAsc(), 'up': !IsAsc() }"  class="triangle down icon"></i>
+												</div>
+											</td>
+										<!-- /ko -->
+										
+										
+										
+										<td></td>
+									</tr>
+								</table>
+							</div>
+							<div class="table-list style-9" >
+								<table cellpadding="0" cellspacing="0" class="scrolling-table" >
+									<tbody>
+									<!-- ko foreach: page.ResultsArea.Table.Rows -->
+										<tr >
+											<td><input type="checkbox" data-bind="checked: $data.Checked, click: $data.OnCheck"  /></td>
+											<td data-bind="text: $data.Id, attr : { title: $data.Id }" >10</td>
+											<td data-bind="text: $data.UserName, attr : { title: $data.UserName }" >Ivanov</td>
+											<td data-bind="text: $data.Email, attr : { title: $data.Email }" >super@mail.ru</td>
+											<td data-bind="text: $data.Roles, attr : { title: $data.Roles }" >Admin, Operator</td>
+											<td data-bind="text: $data.Created, attr : { title: $data.Created }" >22 april 2013</td>
+											<td data-bind="text: $data.Messages, attr : { title: $data.Messages }" >128</td>
+											<td class="oprations"  >
+												<div data-bind="click: $data.Edit" class="edit" >
+													<i class="pencil black icon"></i>
+												</div>
+												<div  data-bind="click: $data.Delete"  class="del" >
+													<i class="delete black icon"></i>
+												</div>
+											</td>
+										</tr>
+									<!-- /ko -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer" >
+					<span>
+						Chat server 2014
+					</span>
+				</div>
+			</div>
+			<script src="javascript/common-scripts.js" ></script>
+			<script src="javascript/custom-binders.js" ></script>
+			<script src="javascript/users.js" ></script>
+		</body>
+</html>

@@ -1,0 +1,12 @@
+﻿body {
+}
+
+.charts-area {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.root > .content  {
+    padding: 30px;
+}

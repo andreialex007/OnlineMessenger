@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/styles/semantic/css/semantic.css")" />
+    @RenderSection("pagestyles", false)
+
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery-2.0.3.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/jquery.cookie.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/knockout-3.0.0.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/knockout.mapping-latest.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/linq.min.js")"></script>
+    <script src="@Url.Content("~/Content/javascript/Libs/moment.min.js")"></script>
+    <script>
+        var controller = '@ViewContext.RouteData.Values["controller"]';
+        function getUrl(path) {
+            return "/" + controller + path;
+        }
+    </script>
+
+    @RenderSection("pagescripts", false)
+</head>
+<body>
+    <div class="page-background"></div>
+    <div class="root">
+        <div class="header">
+            <div class="ui inverted menu">
+                <label class=" item">
+                    <i class="sign in icon"></i> LogIn
+                </label>
+
+            </div>
+        </div>
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="footer">
+            <span>
+                Chat Server @DateTime.Now.Year
+            </span>
+        </div>
+    </div>
+</body>
+</html>
